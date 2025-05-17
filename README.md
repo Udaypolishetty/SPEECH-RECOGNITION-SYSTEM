@@ -1,55 +1,40 @@
-# 🗣️ Speech-to-Text and Short Audio Transcriber
+# SPEECH-RECOGNITION-SYSTEM
 
-This project is a **Speech-to-Text Application** built using **Gradio**, **SpeechRecognition**, and **pydub**. It allows users to either upload short audio files or record live audio from their microphone and get real-time transcriptions.
+COMPANY: CODETECH IT SOLUTIONS
 
-## ✨ Features
+NAME: POLISHETTY UDAY
 
-- Upload audio files (`.mp3`, `.flac`, `.ogg`, etc.) for transcription
-- Record live audio directly from microphone
-- Transcribes using Google's Speech Recognition API
-- Supports audio conversion using `pydub` and `ffmpeg`
-- Simple and clean Gradio-based web interface
+INTERN ID: CODF47
 
-## 🚀 How to Run
+DOMAIN: Web-based AI and Speech Recognition
 
-1. Install dependencies:
-   ```bash
-   pip install gradio SpeechRecognition pydub
-   ```
+DURATION: 4-WEEKS
 
-2. Download and install [FFmpeg](https://ffmpeg.org/download.html), and set the correct path for `ffmpeg.exe` and `ffprobe.exe` in your code:
-   ```python
-   FFMPEG_PATH = r"C:\path\to\ffmpeg.exe"
-   FFPROBE_PATH = r"C:\path\to\ffprobe.exe"
-   ```
+MENTOR: NEELA SANTOSH
 
-3. Run the app:
-   ```bash
-   python app.py
-   ```
+#DESCRIPTION:
 
-4. The app will launch in your browser at `http://127.0.0.1:7860/`.
+THIS PROJECT IS A USER-FRIENDLY SPEECH-TO-TEXT APPLICATION BUILT WITH PYTHON AND THE GRADIO LIBRARY FOR CREATING AN INTERACTIVE WEB INTERFACE. IT ALLOWS USERS TO TRANSCRIBE AUDIO FROM UPLOADED FILES OR RECORDED LIVE FROM THEIR MICROPHONE.
 
-## 🛠 Technologies Used
+THE APPLICATION UTILIZES SEVERAL KEY PYTHON LIBRARIES:
 
-- Python
-- Gradio
-- SpeechRecognition
-- Pydub
-- FFmpeg
+* **`os`**: For interacting with the operating system, primarily used here to manage file paths and remove temporary converted audio files.
+* **`gradio as gr`**: For creating the interactive web interface with simple Python code, providing an easy way for users to interact with the speech-to-text functionality.
+* **`speech_recognition as sr`**: This crucial library provides the tools for performing speech recognition, supporting various engines, including the Google Speech Recognition API used in this project.
+* **`pydub`**: This library is used for working with audio files, specifically to handle different audio formats like MP3, FLAC, and OGG. It's used to convert these formats to WAV, which is more readily processed by the `speech_recognition` library.
 
-## 📌 Use Cases
+THE CODE DEFINES TWO MAIN FUNCTIONS FOR TRANSCRIPTION:
 
-- Quick transcription of meetings, lectures, or recordings
-- Live speech-to-text functionality for short messages or captions
-- Language accessibility tools
+* **`transcribe_audio_file(file)`**: This function takes the path of an uploaded audio file as input. It first checks the file format. If it's MP3, FLAC, or OGG, it uses `pydub` to convert it to a WAV file. Then, it uses the `speech_recognition` library to open the audio file, record the audio data, and transcribe it using the Google Speech Recognition API. Finally, it removes the temporary WAV file (if created) and returns the transcribed text. It includes error handling for cases where the audio is unintelligible, there's an issue with the Google API, or other exceptions occur.
+* **`transcribe_live_microphone()`**: This function uses the `speech_recognition` library to access the user's microphone. It adjusts the recognizer for ambient noise and then listens for audio input. Once audio is captured, it uses the Google Speech Recognition API to transcribe it and returns the resulting text. It also includes error handling for similar issues as the file transcription function.
 
-## 🙌 Credits
+THE USER INTERFACE IS BUILT USING GRADIO'S `Blocks` API, organized into two tabs:
 
-- Speech recognition via [Google Web Speech API](https://cloud.google.com/speech-to-text)
-- UI: [Gradio](https://gradio.app)
-- Developer: Uday
+* **"🎧 Upload Audio File"**: This tab provides an `Audio` component for users to upload audio files. A `Textbox` is displayed to show the transcribed text after the user clicks the "Transcribe Audio File" button. The button triggers the `transcribe_audio_file` function.
+* **"🎤 Record Live from Microphone"**: This tab features a `Textbox` that serves as a placeholder and displays the live transcribed text. A "Record🔴 and Transcribe ၊၊||၊" button initiates the live recording and transcription process using the `transcribe_live_microphone` function, with the output displayed in the `Textbox`.
 
----
+THE APPLICATION ALSO SETS UP THE PATHS FOR `ffmpeg` and `ffprobe`, which are external tools required by `pydub` to handle various audio formats. It adds the directory containing these executables to the system's PATH environment variable and explicitly sets the converter and ffprobe paths for `AudioSegment`.
 
-> 🔗 You are welcome to fork and customize this project for your own audio transcription tasks!
+THIS PROJECT PROVIDES A CONVENIENT WAY TO PERFORM SPEECH-TO-TEXT TRANSLATION FOR BOTH EXISTING AUDIO FILES AND LIVE RECORDINGS, LEVERAGING THE POWER OF THE GOOGLE SPEECH RECOGNITION API AND A SIMPLE YET EFFECTIVE WEB INTERFACE CREATED WITH GRADIO. IT DEMONSTRATES SKILLS IN AUDIO PROCESSING, SPEECH RECOGNITION API INTEGRATION, AND WEB INTERFACE DEVELOPMENT USING PYTHON LIBRARIES.
+
+# SAMPLE OUTPUT:
